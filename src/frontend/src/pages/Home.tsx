@@ -155,6 +155,7 @@ export default function Home() {
               ["Donate", "#donate"],
               ["Sponsorship", "#sponsorship"],
               ["Events", "#events"],
+              ["Festival Dates", "#festival-dates"],
               ["Leaderboard", "#leaderboard"],
             ].map(([label, href]) => (
               <a
@@ -212,6 +213,7 @@ export default function Home() {
                   ["Donate", "#donate"],
                   ["Sponsorship", "#sponsorship"],
                   ["Events", "#events"],
+                  ["Festival Dates", "#festival-dates"],
                   ["Leaderboard", "#leaderboard"],
                   ["Admin", "/admin"],
                 ].map(([label, href]) => (
@@ -955,6 +957,298 @@ export default function Home() {
               generations to come.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* FESTIVAL DATES 2026 */}
+      <section
+        id="festival-dates"
+        className="py-24 px-4 relative overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(135deg, #0d0820 0%, #1a0f3e 30%, #2d1b00 70%, #1a0820 100%)",
+        }}
+      >
+        {/* Starfield dots */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {[...Array(40)].map((_, i) => (
+            <div
+              // biome-ignore lint/suspicious/noArrayIndexKey: static decorative elements
+              key={i}
+              className="absolute rounded-full bg-white opacity-20"
+              style={{
+                width: `${Math.random() * 3 + 1}px`,
+                height: `${Math.random() * 3 + 1}px`,
+                top: `${(i * 7 + 13) % 100}%`,
+                left: `${(i * 13 + 7) % 100}%`,
+              }}
+            />
+          ))}
+          {/* Saffron radial glow */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10"
+            style={{
+              background:
+                "radial-gradient(circle, #c8860a 0%, transparent 70%)",
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto">
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-14"
+          >
+            <p className="text-bsa-gold font-bold text-xs tracking-[0.3em] uppercase mb-4">
+              ✦ Durga Puja 2026 ✦
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              Sacred{" "}
+              <span
+                className="text-transparent bg-clip-text"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #c8860a, #f5a623, #c8860a)",
+                }}
+              >
+                Festival Dates
+              </span>
+            </h2>
+            {/* Ornate divider */}
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div
+                className="flex-1 max-w-[100px] h-px"
+                style={{
+                  background: "linear-gradient(to right, transparent, #c8860a)",
+                }}
+              />
+              <span className="text-bsa-gold text-xl">🌸</span>
+              <span className="text-white/40 text-lg">✦</span>
+              <span className="text-bsa-gold text-xl">🪔</span>
+              <div
+                className="flex-1 max-w-[100px] h-px"
+                style={{
+                  background: "linear-gradient(to left, transparent, #c8860a)",
+                }}
+              />
+            </div>
+            <p className="text-white/60 text-base max-w-lg mx-auto font-medium">
+              Mark your calendar and celebrate with us!
+            </p>
+          </motion.div>
+
+          {/* Festival cards — horizontal scroll mobile, grid desktop */}
+          <div className="overflow-x-auto pb-4 md:overflow-visible">
+            <div className="flex md:grid md:grid-cols-7 gap-4 w-max md:w-auto">
+              {[
+                {
+                  name: "Mahalaya",
+                  date: "October 10",
+                  day: "Saturday",
+                  emoji: "🌙",
+                  variant: "mahalaya",
+                  label: "Eve & Beginning",
+                },
+                {
+                  name: "Maha Panchami",
+                  date: "October 16",
+                  day: "Friday",
+                  emoji: "🌸",
+                  variant: "regular",
+                  label: null,
+                },
+                {
+                  name: "Maha Shashthi",
+                  date: "October 17",
+                  day: "Saturday",
+                  emoji: "🎊",
+                  variant: "regular",
+                  label: null,
+                },
+                {
+                  name: "Maha Saptami",
+                  date: "October 18",
+                  day: "Sunday",
+                  emoji: "🪔",
+                  variant: "regular",
+                  label: null,
+                },
+                {
+                  name: "Maha Ashtami",
+                  date: "October 19",
+                  day: "Monday",
+                  emoji: "🔱",
+                  variant: "sacred",
+                  label: "Most Sacred",
+                },
+                {
+                  name: "Maha Navami",
+                  date: "October 20",
+                  day: "Tuesday",
+                  emoji: "🙏",
+                  variant: "regular",
+                  label: null,
+                },
+                {
+                  name: "Vijayadashami",
+                  date: "October 21",
+                  day: "Wednesday",
+                  emoji: "🏆",
+                  variant: "finale",
+                  label: "Grand Finale",
+                },
+              ].map((fest, i) => {
+                const isMahalaya = fest.variant === "mahalaya";
+                const isSacred = fest.variant === "sacred";
+                const isFinale = fest.variant === "finale";
+
+                return (
+                  <motion.div
+                    key={fest.name}
+                    initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.55, delay: i * 0.1 }}
+                    whileHover={{ y: -6, scale: 1.04 }}
+                    className={`relative flex-shrink-0 w-36 md:w-auto rounded-2xl overflow-hidden cursor-default select-none transition-shadow duration-300 ${
+                      isFinale
+                        ? "shadow-[0_0_30px_rgba(200,134,10,0.5)] border-2 border-bsa-gold"
+                        : isSacred
+                          ? "shadow-[0_0_20px_rgba(138,43,226,0.4)] border-2 border-purple-400/60"
+                          : isMahalaya
+                            ? "shadow-[0_0_15px_rgba(100,150,255,0.3)] border border-blue-300/40"
+                            : "border border-white/10"
+                    }`}
+                    data-ocid={`festival-dates.item.${i + 1}`}
+                    style={{
+                      background: isFinale
+                        ? "linear-gradient(145deg, #2d1b00, #4a2f00, #1a0d00)"
+                        : isSacred
+                          ? "linear-gradient(145deg, #1a0830, #2d1060, #1a0830)"
+                          : isMahalaya
+                            ? "linear-gradient(145deg, #0a1530, #1a2d50, #0a1530)"
+                            : "linear-gradient(145deg, #1a1030, #251545, #1a1030)",
+                    }}
+                  >
+                    {/* Top shimmer bar */}
+                    <div
+                      className="h-1 w-full"
+                      style={{
+                        background: isFinale
+                          ? "linear-gradient(90deg, #c8860a, #f5d020, #c8860a)"
+                          : isSacred
+                            ? "linear-gradient(90deg, #7c3aed, #a855f7, #7c3aed)"
+                            : isMahalaya
+                              ? "linear-gradient(90deg, #3b82f6, #93c5fd, #3b82f6)"
+                              : "linear-gradient(90deg, #c8860a44, #c8860a88, #c8860a44)",
+                      }}
+                    />
+
+                    <div className="p-4 text-center flex flex-col items-center gap-2">
+                      {/* Label badge */}
+                      {fest.label && (
+                        <span
+                          className={`text-[9px] font-bold tracking-widest uppercase rounded-full px-2 py-0.5 ${
+                            isFinale
+                              ? "bg-bsa-gold text-black"
+                              : isSacred
+                                ? "bg-purple-500/80 text-white"
+                                : "bg-blue-500/60 text-white"
+                          }`}
+                        >
+                          {fest.label}
+                        </span>
+                      )}
+
+                      {/* Emoji */}
+                      <span
+                        className={`${isFinale ? "text-4xl" : isSacred ? "text-3xl" : "text-2xl"}`}
+                      >
+                        {fest.emoji}
+                      </span>
+
+                      {/* Festival name */}
+                      <h3
+                        className={`font-serif font-bold leading-tight text-center ${
+                          isFinale
+                            ? "text-base text-bsa-gold"
+                            : isSacred
+                              ? "text-sm text-purple-200"
+                              : isMahalaya
+                                ? "text-sm text-blue-200"
+                                : "text-sm text-white"
+                        }`}
+                      >
+                        {fest.name}
+                      </h3>
+
+                      {/* Date */}
+                      <p
+                        className={`text-xs font-semibold ${
+                          isFinale ? "text-white/90" : "text-white/60"
+                        }`}
+                      >
+                        {fest.date}
+                      </p>
+
+                      {/* Day of week */}
+                      <span
+                        className={`text-[10px] font-bold tracking-wider uppercase rounded px-2 py-0.5 ${
+                          isFinale
+                            ? "bg-bsa-gold/20 text-bsa-gold border border-bsa-gold/40"
+                            : isSacred
+                              ? "bg-purple-500/20 text-purple-300 border border-purple-400/30"
+                              : isMahalaya
+                                ? "bg-blue-500/20 text-blue-300 border border-blue-400/30"
+                                : "bg-white/10 text-white/50 border border-white/10"
+                        }`}
+                      >
+                        {fest.day}
+                      </span>
+                    </div>
+
+                    {/* Finale sparkle overlay */}
+                    {isFinale && (
+                      <div className="absolute inset-0 pointer-events-none">
+                        {["10%", "30%", "70%", "90%"].map((left, j) => (
+                          <motion.div
+                            // biome-ignore lint/suspicious/noArrayIndexKey: static decorative elements
+                            key={j}
+                            className="absolute w-1 h-1 rounded-full bg-bsa-gold"
+                            style={{ left, top: `${20 + j * 15}%` }}
+                            animate={{
+                              opacity: [0, 1, 0],
+                              scale: [0.5, 1.5, 0.5],
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Number.POSITIVE_INFINITY,
+                              delay: j * 0.5,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Footer note */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-center text-white/40 text-xs mt-8 tracking-wider"
+          >
+            ✦ All events held at Bhoirwadi, Maharashtra ✦
+          </motion.p>
         </div>
       </section>
 
