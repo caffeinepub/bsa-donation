@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* BSA Brand Colors (OKLCH) */
+    /* Deep Green #1F4B2E → oklch(0.30 0.09 155) */
+    --bsa-green: 0.3 0.09 155;
+    /* Warm Beige #F4E6C8 → oklch(0.92 0.05 80) */
+    --bsa-beige: 0.92 0.05 80;
+    /* Gold #D6B56B → oklch(0.76 0.09 75) */
+    --bsa-gold: 0.76 0.09 75;
+    /* Orange CTA #E07A1F → oklch(0.66 0.17 50) */
+    --bsa-orange: 0.66 0.17 50;
+    /* Darker Orange #B85A1A → oklch(0.54 0.15 46) */
+    --bsa-orange-dark: 0.54 0.15 46;
+    /* Brown footer #4A2A16 → oklch(0.26 0.07 46) */
+    --bsa-brown: 0.26 0.07 46;
+    /* Darker brown #2E170C → oklch(0.18 0.05 45) */
+    --bsa-brown-dark: 0.18 0.05 45;
+    /* Body text #2B1E16 → oklch(0.19 0.04 48) */
+    --bsa-text: 0.19 0.04 48;
+
+    /* shadcn tokens mapped to BSA palette */
+    --background: 0.92 0.05 80;
+    --foreground: 0.19 0.04 48;
+    --card: 0.97 0.03 75;
+    --card-foreground: 0.19 0.04 48;
+    --popover: 0.97 0.03 75;
+    --popover-foreground: 0.19 0.04 48;
+    --primary: 0.66 0.17 50;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.3 0.09 155;
+    --secondary-foreground: 0.98 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --muted: 0.88 0.04 80;
+    --muted-foreground: 0.45 0.04 55;
+    --accent: 0.76 0.09 75;
+    --accent-foreground: 0.19 0.04 48;
+    --border: 0.8 0.05 75;
+    --input: 0.85 0.04 78;
+    --ring: 0.66 0.17 50;
+    --chart-1: 0.66 0.17 50;
+    --chart-2: 0.3 0.09 155;
+    --chart-3: 0.76 0.09 75;
+    --chart-4: 0.54 0.15 46;
+    --chart-5: 0.26 0.07 46;
+    --sidebar: 0.3 0.09 155;
+    --sidebar-foreground: 0.92 0.05 80;
+    --sidebar-primary: 0.66 0.17 50;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.24 0.08 152;
+    --sidebar-accent-foreground: 0.92 0.05 80;
+    --sidebar-border: 0.24 0.08 152;
+    --sidebar-ring: 0.66 0.17 50;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-image: radial-gradient(
+        circle at 20% 50%,
+        oklch(0.88 0.05 75 / 0.5) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        oklch(0.9 0.04 78 / 0.4) 0%,
+        transparent 40%
+      );
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Decorative Indian motif elements */
+@layer components {
+  .mandala-divider {
+    position: relative;
+    text-align: center;
+  }
+  .mandala-divider::before,
+  .mandala-divider::after {
+    content: "❋";
+    display: inline-block;
+    margin: 0 1rem;
+    color: oklch(var(--bsa-gold));
+    font-size: 1.5rem;
+  }
+
+  .section-ornament {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='2' fill='%23D6B56B' opacity='0.4'/%3E%3Ccircle cx='30' cy='30' r='8' fill='none' stroke='%23D6B56B' stroke-width='0.5' opacity='0.3'/%3E%3Ccircle cx='30' cy='30' r='14' fill='none' stroke='%23D6B56B' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 60px 60px;
+  }
+
+  .lotus-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cellipse cx='40' cy='55' rx='6' ry='14' fill='none' stroke='%23D6B56B' stroke-width='0.5' opacity='0.2' transform='rotate(0 40 40)'/%3E%3Cellipse cx='40' cy='55' rx='6' ry='14' fill='none' stroke='%23D6B56B' stroke-width='0.5' opacity='0.2' transform='rotate(45 40 40)'/%3E%3Cellipse cx='40' cy='55' rx='6' ry='14' fill='none' stroke='%23D6B56B' stroke-width='0.5' opacity='0.2' transform='rotate(90 40 40)'/%3E%3Cellipse cx='40' cy='55' rx='6' ry='14' fill='none' stroke='%23D6B56B' stroke-width='0.5' opacity='0.2' transform='rotate(135 40 40)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 80px 80px;
+  }
+
+  .bsa-btn-orange {
+    @apply bg-bsa-orange text-white font-bold px-6 py-3 rounded-lg hover:bg-bsa-orange-dark transition-all duration-200 shadow-md hover:shadow-lg active:scale-95;
+  }
+
+  .bsa-btn-outline {
+    @apply border-2 border-white text-white font-bold px-6 py-3 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95;
+  }
+
+  .bsa-card {
+    @apply bg-card rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300;
+  }
+
+  .gold-badge {
+    background: linear-gradient(135deg, oklch(0.76 0.09 75), oklch(0.85 0.1 80));
+    @apply text-bsa-text font-bold;
+  }
+
+  .silver-badge {
+    background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+    @apply text-bsa-text font-bold;
+  }
+
+  .bronze-badge {
+    background: linear-gradient(135deg, #cd7f32, #e8a95a);
+    @apply text-white font-bold;
+  }
+
+  .section-heading {
+    @apply font-serif text-3xl md:text-4xl font-bold text-bsa-text;
+  }
+
+  .section-subheading {
+    @apply font-serif text-xl md:text-2xl font-semibold text-bsa-text;
+  }
+}
